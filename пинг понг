@@ -46,9 +46,9 @@ lost = 0
 
 
 
-racket1 = Player("облако4.png", 30, 200, 4, 50, 150)
-racket2 = Player("облако4.png", 520, 200, 4, 50, 150)
-ball = GameSprite("солнце.png", 200, 200, 4, 50, 50)
+racket1 = Player("облако 1.png", 30, 150, 4, 90, 225)
+racket2 = Player("облако 2.png", 560, 150, 4, 120, 225)
+ball = GameSprite("мяч.png", 200, 200, 4, 70, 70)
 
 speed_x = 3
 speed_y = 3
