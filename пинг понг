@@ -7,7 +7,7 @@ win_width = 700
 window = display.set_mode((win_width, win_height))
 display.set_caption("Пинг понг")
 
-background = transform.scale(image.load("небо1.png"), (700, 500))
+background = transform.scale(image.load("фон.jpg"), (700, 500))
 
 finish = False
 game = True
@@ -46,9 +46,14 @@ lost = 0
 
 
 
-racket1 = Player("облако 1.png", 30, 150, 4, 90, 225)
-racket2 = Player("облако 2.png", 560, 150, 4, 120, 225)
-ball = GameSprite("мяч.png", 200, 200, 4, 70, 70)
+racket1 = Player("облако 1.png", 10, 150, 4, 90, 225)
+racket2 = Player("облако 2.png", 570, 150, 4, 120, 225)
+ball = GameSprite("мяч.png", 200, 200, 6, 70, 70)
+
+font.init()
+font = font.Font(None, 70)
+lose1 = font.render('PLAER 1 LOSE!', True, (166, 0, 0))
+lose2 = font.render('PLAER 2 LOSE!', True, (166, 0, 0))
 
 speed_x = 3
 speed_y = 3
@@ -80,8 +85,15 @@ while game:
         if ball.rect.y > 450 or ball.rect.y < 0:
             speed_y *= -1
             
-            
+        if ball.rect.x < 0:
+                finish = True
+                window.blit(lose1, (170, 250))
 
+        if ball.rect.x > win_width:
+                finish = True
+                window.blit(lose2, (170, 250))
+            
+        
     display.update()
     clock.tick(FPS)
 
